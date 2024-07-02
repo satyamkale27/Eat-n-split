@@ -32,8 +32,21 @@ function FriendList() {
   return (
     <ul>
       {friends.map((friend) => (
-        <li>{friend.name}</li>
+        <Friend key={friend.id} friend={friend} />
       ))}
     </ul>
+  );
+}
+function Friend({ friend }) {
+  return (
+    <li>
+      <img src={friend.image} alt={friend.name} />
+      <h3>{friend.name}</h3>
+      {friend.balance < 0 && (
+        <p className="red">
+          You owe {friend.name} {friend.balance}{" "}
+        </p>
+      )}
+    </li>
   );
 }
