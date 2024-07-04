@@ -55,7 +55,20 @@ function Friend({ friend }) {
       )}
       <h3>{friend.name}</h3>
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
-      <button className="button">Select</button>
+      <Button>Select</Button>
     </li>
+  );
+}
+function Button({ children }) {
+  return <button className="button">{children}</button>;
+}
+function Form() {
+  return (
+    <form className="form-add-friend">
+      <label> 👫Friend name</label>
+      <input type="text" />
+      <label> 🌄 Image URL</label>
+      <input type="text" />
+    </form>
   );
 }
