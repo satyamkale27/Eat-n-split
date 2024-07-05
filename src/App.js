@@ -30,7 +30,7 @@ function Button({ children, onClick }) {
 
 export default function App() {
   const [showAddFriend, setshowAddFriend] = useState(false);
-
+  const [friend, Setfriend] = useState(initialFriends);
   function handelshowAddFriend() {
     setshowAddFriend((Show) => !Show);
   }
@@ -38,7 +38,7 @@ export default function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendList />
+        <FriendList friends={friend} />
         {showAddFriend && <FormAddFriend />}
         <Button onClick={handelshowAddFriend}>
           {showAddFriend ? "close" : "Add friend"}
@@ -48,8 +48,7 @@ export default function App() {
     </div>
   );
 }
-function FriendList() {
-  const friends = initialFriends;
+function FriendList({ friends }) {
   return (
     <ul>
       {friends.map((friend) => (
