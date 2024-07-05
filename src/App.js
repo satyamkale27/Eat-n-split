@@ -31,6 +31,7 @@ function Button({ children, onClick }) {
 export default function App() {
   const [showAddFriend, setshowAddFriend] = useState(false);
   const [friend, setFriend] = useState(initialFriends);
+  const [selectedFriend, setSelectedFriend] = useState(null);
 
   function handelshowAddFriend() {
     setshowAddFriend((Show) => !Show);
