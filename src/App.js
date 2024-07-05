@@ -70,16 +70,17 @@ function FriendList({ friends, onSelecttion, selectedFriend }) {
         <Friend
           key={friend.id}
           friend={friend}
-          onSelecttion={onSelecttion}
           selectedFriend={selectedFriend}
+          onSelecttion={onSelecttion}
         />
       ))}
     </ul>
   );
 }
 function Friend({ friend, onSelecttion, selectedFriend }) {
+  const isSelected = selectedFriend.id === friend.id;
   return (
-    <li>
+    <li className={isSelected ? "selected" : ""}>
       <img src={friend.image} alt={friend.name} />
       <h3>{friend.name}</h3>
       {friend.balance < 0 && (
