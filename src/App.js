@@ -37,6 +37,7 @@ export default function App() {
   }
   function handelAddFriend(newFriend) {
     setFriend((friend) => [...friend, newFriend]);
+    setshowAddFriend(false);
   }
 
   return (
