@@ -40,30 +40,35 @@ export default function App() {
     setFriend((friend) => [...friend, newFriend]);
     setshowAddFriend(false);
   }
+  function handelSelection(friendsss) {
+    setSelectedFriend(friendsss);
+  }
 
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendList friends={friend} />
+        <FriendList friends={friend} onSelecttion={handelSelection} />
+
         {showAddFriend && <FormAddFriend onaddfriends={handelAddFriend} />}
+
         <Button onClick={handelshowAddFriend}>
           {showAddFriend ? "close" : "Add friend"}
         </Button>
       </div>
-      <FormSplitBill />
+      {selectedFriend && <FormSplitBill />}
     </div>
   );
 }
-function FriendList({ friends }) {
+function FriendList({ friends, onSelecttion }) {
   return (
     <ul>
       {friends.map((friend) => (
-        <Friend key={friend.id} friend={friend} />
+        <Friend key={friend.id} friend={friend} onSelecttion={onSelecttion} />
       ))}
     </ul>
   );
 }
-function Friend({ friend }) {
+function Friend({ friend, onSelecttion }) {
   return (
     <li>
       <img src={friend.image} alt={friend.name} />
@@ -81,7 +86,7 @@ function Friend({ friend }) {
       )}
       <h3>{friend.name}</h3>
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
-      <Button>Select</Button>
+      <Button onClick={() => onSelecttion(friend)}>Select</Button>
     </li>
   );
 }
