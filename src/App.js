@@ -86,13 +86,15 @@ function FormAddFriend() {
   const [image, Setimage] = useState("https://i.pravatar.cc/48?u=499476");
   function handelsubmit(e) {
     e.preventDefault();
+    const id = crypto.randomUUID();
     const newFriend = {
       name,
-      image,
+      image: `${image}?=${id}`,
       balance: 0,
-      id: crypto.randomUUID,
     };
     console.log(newFriend);
+    Setname("");
+    Setimage("https://i.pravatar.cc/48?u=499476");
   }
   return (
     <form className="form-add-friend" onClick={handelsubmit}>
