@@ -41,7 +41,7 @@ export default function App() {
     setshowAddFriend(false);
   }
   function handelSelection(friendsss) {
-    setSelectedFriend(friendsss);
+    setSelectedFriend((cur) => (cur?.id === friendsss.id ? null : friendsss));
   }
 
   return (
@@ -78,7 +78,7 @@ function FriendList({ friends, onSelecttion, selectedFriend }) {
   );
 }
 function Friend({ friend, onSelecttion, selectedFriend }) {
-  const isSelected = selectedFriend.id === friend.id;
+  const isSelected = selectedFriend?.id === friend.id;
   return (
     <li className={isSelected ? "selected" : ""}>
       <img src={friend.image} alt={friend.name} />
@@ -96,7 +96,9 @@ function Friend({ friend, onSelecttion, selectedFriend }) {
       )}
       <h3>{friend.name}</h3>
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
-      <Button onClick={() => onSelecttion(friend)}>Select</Button>
+      <Button onClick={() => onSelecttion(friend)}>
+        {isSelected ? "close" : "Select"}
+      </Button>
     </li>
   );
 }
