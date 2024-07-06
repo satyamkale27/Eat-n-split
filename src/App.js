@@ -148,7 +148,7 @@ function FormAddFriend({ onaddfriends }) {
     Setimage("https://i.pravatar.cc/48?u=499476");
   }
   return (
-    <form className="form-add-friend" onClick={handelsubmit}>
+    <form className="form-add-friend" onSubmit={handelsubmit}>
       <label> 👫 Friend name</label>
       <input
         type="text"
@@ -210,7 +210,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
         <option value="user">You</option>
         <option value="friend">{selectedFriend.name}</option>
       </select>
-      <Button onClick={onSplitBill}>Split bill</Button>
+      <Button>Split bill</Button>
     </form>
   );
 }
