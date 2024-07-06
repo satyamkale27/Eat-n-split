@@ -42,7 +42,15 @@ export default function App() {
   }
   function handelSelection(friendsss) {
     setSelectedFriend((cur) => (cur?.id === friendsss.id ? null : friendsss));
+    setshowAddFriend(false);
   }
+  // function handelSelection(friendsss) {
+  //   showAddFriend
+  //     ? setSelectedFriend(null)
+  //     : setSelectedFriend((cur) =>
+  //         cur?.id === friendsss.id ? null : friendsss
+  //       );
+  // } // my logic //
 
   return (
     <div className="app">
