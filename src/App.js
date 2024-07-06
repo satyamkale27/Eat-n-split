@@ -46,7 +46,15 @@ export default function App() {
   }
 
   function handelSplitBill(value) {
-    console.log(`value is${value}`);
+    console.log(`value is ${value}`);
+    setFriend((friend) =>
+      friend.map((friends) =>
+        friends.id === selectedFriend.id
+          ? { ...friends, balance: friends.balance + value }
+          : friends
+      )
+    );
+    console.log(friend);
   }
 
   // function handelSelection(friendsss) {
@@ -161,13 +169,13 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
   const [bill, setBill] = useState("");
   const [paisByUser, setPaidByUser] = useState("");
   const [whoIsPaying, setWhoIsPaying] = useState("user");
-  let friendExpenese = bill ? bill - paisByUser : "";
+  const friendExpenese = bill ? bill - paisByUser : "";
 
   function handelSubmit(e) {
     e.preventDefault();
 
     if (!bill || !setPaidByUser) return;
-    onSplitBill(whoIsPaying === "user" ? selectedFriend.name : -paisByUser);
+    onSplitBill(whoIsPaying === "user" ? friendExpenese : -paisByUser);
   }
 
   return (
@@ -200,7 +208,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
         onChange={(e) => setWhoIsPaying(e.target.value)}
       >
         <option value="user">You</option>
-        <option value={selectedFriend.value}>{selectedFriend.name}</option>
+        <option value="friend">{selectedFriend.name}</option>
       </select>
       <Button onClick={onSplitBill}>Split bill</Button>
     </form>
