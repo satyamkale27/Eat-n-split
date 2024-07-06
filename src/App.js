@@ -55,6 +55,7 @@ export default function App() {
       )
     );
     console.log(friend);
+    setSelectedFriend(null);
   }
 
   // function handelSelection(friendsss) {
