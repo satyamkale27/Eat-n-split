@@ -175,7 +175,7 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
   function handelSubmit(e) {
     e.preventDefault();
 
-    if (!bill || !setPaidByUser) return;
+    if (!bill || !paisByUser) return;
     onSplitBill(whoIsPaying === "user" ? friendExpenese : -paisByUser);
   }
 
