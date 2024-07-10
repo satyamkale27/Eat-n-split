@@ -30,4 +30,4 @@ To run the project, follow these steps:
 
 That's it! You have successfully set up and run the project on your local machine.
 
-This project is designed to help me practice using state, props, children props, lifting up states, and rendering components.
+This project is designed to help practice use state, props, children props, lifting up states, and rendering components.
